@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   mongo.connect(path,(err,db)=>{
   	if(!err){
+  		req.body.time = Date.now();
   		db.collection("payment").insertOne(req.body,(err)=>{
   			if(!err){
   				res.send(`<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

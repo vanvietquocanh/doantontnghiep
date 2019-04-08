@@ -15,10 +15,13 @@ var emailGuestRouter = require('./routes/post.emailGuest');
 var drinksRouter = require('./routes/get.product-drinks');
 var usersRouter = require('./routes/users');
 var newsRouter = require('./routes/get.news');
+var removeEmailClientRouter = require('./routes/post.removeEmailClient');
 var policyFaqRouter = require('./routes/get.policy-faq');
 var aboutRouter = require('./routes/get.about-us');
 var contactRouter = require('./routes/get.contact');
+var paymentbillRouter = require('./routes/get.paymentbill');
 var adminRouter = require('./routes/get.admin');
+var emailRouter = require('./routes/get.email');
 var signinFacebookRouter = require('./routes/signinFacebook');
 
 var infoAPI = require("./routes/apiInfo.js")
@@ -28,7 +31,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -74,6 +77,9 @@ app.use('/policy-faq', policyFaqRouter);
 app.use('/about-us', aboutRouter);
 app.use('/contact-us', contactRouter);
 app.use('/news', newsRouter);
+app.use('/paymentbill', paymentbillRouter);
+app.use('/removeemail', removeEmailClientRouter);
+app.use('/email-guest', emailRouter);
 app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler

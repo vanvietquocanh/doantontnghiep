@@ -11,6 +11,7 @@ router.post('/', function(req, res, next) {
   			console.log(req.body);
   mongo.connect(path,(err,db)=>{
   	if(!err&&validateEmail(req.body.email)){
+  		req.body.time = Date.now();
   		db.collection("emailGuest").insertOne(req.body,(err)=>{
   			if(!err){
   				res.send(`<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
